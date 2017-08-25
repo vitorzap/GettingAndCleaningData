@@ -8,9 +8,6 @@
 # Removing all objects from the environment before starting
 rm(list = ls())
 
-#  Setting the working directory and removing all variables
-setwd("~/Documents/DataAnalyst/CouseraCourse/Project")
-
 #
 # Download the data source to working directory 
 # (se este j? existir pergunta ao usu?riose deseja sobreescrever)
