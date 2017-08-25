@@ -14,9 +14,9 @@
 #
 #  Data set obtained as final result (allDatafinal)
 
-* ####_Saved as "tidydataset.txt"_####
+#### _*Saved as "tidydataset.txt"*_
 
-* ###_Content:_###
+### _*Content:*_
 
  1. **activity:**   Activity performed  - factor -> 6 levels (1-WALKING 2-WALKING_UPSTAIRS 3-WALKING_DOWNSTAIRS 4-SITTING 5-STANDING  6-LAYING ) 
  2. **subjectid:**  Subject identification  - integer(1-30)                                                                           
@@ -85,4 +85,4 @@
 65. **fbodybodygyromagnitudemean:** (frequency domain signal) Average of means of magnitute of angular velocity by activity and subject - numeric                          
 66. **fbodybodygyromagnitudestandarddeviation:** (frequency domain signal) Average of standard deviations of magnitute of angular velocity by activity and subjecc            
 67. **fbodybodygyrojerkmagnitudemean:** (frequency domain signal) Average of means of jerk of magnitute of angular velocity by activity and subject - numeric                     
-68. **fbodybodygyrojerkmagnitudestandarddeviati
+68. **fbodybodygyrojerkmagnitudestandarddeviation:** (frequency domain signal) Average of standard deviations of jerk of magnitute of angular velocity by activity and subject - numeric
