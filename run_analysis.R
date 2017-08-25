@@ -131,7 +131,7 @@ allDataSum <- ddply(allDataLong,c("activity","subjectid","variable"),summarise,v
 allDataFinal <- dcast(allDataSum, activity + subjectid ~ variable)
 # Saving the final data set
 tidyDatasetName=paste(getwd(),"tidydataset.txt",sep="/")
-write.table(allDataFinal,tidyDatasetName)
+write.table(allDataFinal,tidyDatasetName,row.names = FALSE)
 #
 # END
 #
