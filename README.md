@@ -2,7 +2,7 @@
 
 #
 
-Most of part of data analyst work time is spent on preparing the data before doing any statistical operation (Tidying the data) and that&#39;s the focus of this final project for the Getting and Cleaning Data course on Cousera. In this project we have to get a group of files that compound an &quot;untidy&quot; dataset from an experiment about human movements while doing some activities.
+Most of part of data analyst work time is spent on preparing the data before doing any statistical operation (Tidying the data) and that&#39;s the focus of this final project for the Getting and Cleaning Data course on Cousera. In this project we have to get a group of files that compound an &quot;untidy&quot; data set from an experiment about human movements while doing some activities.
 
 The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years, and the data is acquired by the accelerometer and gyroscope from the smartphones used for these persons (all used the same Samsung Galaxy S II)
 
@@ -76,11 +76,11 @@ Then I started to work to accomplish each instruction stated above:
 
 ### *1. Merges the training and the test set to create one data set.*
 
-Since the datasets in each directory (train and test) have the same number of rows, I put the variables side by side by joining them into a dataset using &quot;cbind&quot;. I got then 2 datasets one from train subdirectory and other from test subdirectory. These datasets have the same number of columns and were concatenated using &quot;rbind&quot;, generating a dataset that I called  &quot;allData&quot;, then create a character vector by combining the strings &quot;SubjectId&quot; and &quot;Activity&quot; and the content of &quot;features.txt&quot; (&quot;SubjectId&quot; and &quot;Activity&quot; for the columns from  &quot;subject\_\*.txt&quot; and &quot;Y\_\*.txt and &quot;features.txt&quot; for columns from &quot;X\_\*.txt&quot;). I named this character vector as &quot;ColumnNames&quot; and used it to put the names on the dataset  (names(allData) &lt;- ColumnNames).
+Since the data sets in each directory (train and test) have the same number of rows, I put the variables side by side by joining them into a data set using &quot;cbind&quot;. I got then 2 data sets one from train subdirectory and other from test subdirectory. These data sets have the same number of columns and were concatenated using &quot;rbind&quot;, generating a data set that I called  &quot;allData&quot;, then create a character vector by combining the strings  &quot;Activity&quot; and &quot;SubjectId&quot; and the content of &quot;features.txt&quot; (&quot;Activity&quot;  and &quot;SubjectId&quot; for the columns from  &quot;Y\_\*.txt &quot; and &quot;subject\_\*.txt&quot; and  &quot;features.txt&quot; for columns from &quot;X\_\*.txt&quot;). I named this character vector as &quot;ColumnNames&quot; and used it to put the names on the data set  (names(allData) &lt;- ColumnNames).
 
 ### *2. Extracts only the measurements on the mean and standard deviation for each measurement.*
 
-After inspect the content of features.txt, I think that the &quot;measurements on the mean and standard deviation&quot; are the variables witch have the string &quot;mean()&quot;and &quot;std()&quot; in their names. So the variables that should be used are &quot;SubjectId&quot;, &quot;Activity&quot; and all others that contain strings &quot;mean ()&quot; or &quot;std ()&quot; in their name. Using the vector with the names of the variables created in step 1 (ColumnNames) I created a vector of integers containing the indices of the columns to be kept in the dataset (ColumnsToExtract &lt;- c (1: 2, grep (&quot;mean\\(\\)|Std\\(\\)&quot;, ColumnNames)) and I used this vector to remove the useless columns, thus attending step 2 (allData &lt;- allData [ColumnsToExtract])
+After inspect the content of features.txt, I think that the &quot;measurements on the mean and standard deviation&quot; are the variables witch have the string &quot;mean()&quot;and &quot;std()&quot; in their names. So the variables that should be used are &quot;Activity&quot;, &quot;SubjectId&quot; and all others that contain strings &quot;mean ()&quot; or &quot;std ()&quot; in their name. Using the vector with the names of the variables created in step 1 (ColumnNames) I created a vector of integers containing the indices of the columns to be kept in the data set (ColumnsToExtract &lt;- c (1: 2, grep (&quot;mean\\(\\)|Std\\(\\)&quot;, ColumnNames)) and I used this vector to remove the useless columns, thus attending step 2 (allData &lt;- allData [ColumnsToExtract])
 
 ### *3. Uses descriptive activity names to name the activities in the data set.*
 
@@ -94,8 +94,16 @@ To accomplish this step I decided to replace the &quot;Activity&quot; column, wh
 
 ### *4. Appropriately labels the data set with descriptive variable names*
 
-I retrieved the names of the columns using &quot;names&quot; in the variable &quot;columnNames&quot; and I used a series of &quot;gsubs&quot; turn them more meaningful in the way I think and reapplied to dataset allData also using &quot;names&quot;, thus fulfilling step 3
+I retrieved the names of the columns using &quot;names&quot; in the variable &quot;columnNames&quot; and I used a series of &quot;gsubs&quot; turn them more meaningful in the way I think and reapplied to data set allData also using &quot;names&quot;, thus fulfilling step 3
 
 ### *5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.*
 
-In order to facilitate the calculus of the average of each measurement variable I melted the dataset by getting one value per line, then I used &quot;ddply&quot; to obtain the averages of these values grouped by &quot;SubjectId&quot;, &quot;Activity&quot; and &quot;variable&quot; and after that returned to a &quot;wide&quot; format with &quot;dcast&quot;, giving the dataset required by this step.
+In order to facilitate the calculus of the average of each measurement variable I melted the data set by getting one value per line, then I used &quot;ddply&quot; to obtain the averages of these values grouped by &quot;Activity&quot;, &quot;SubjectId&quot; and &quot;variable&quot; and after that returned to a &quot;wide&quot; format with &quot;dcast&quot;, giving the data set required by this step.
+
+
+# **Result**
+
+There are 66 selected variables (containing media or standard deviation) as we can see using command "dim (allData)" whose result is "[1] 10299 68" and knows that two columns are "Activity" and "SubjectId".
+As we have 30 people in the experience and 6 activities when we summarize each variable per person and activities we should get a data set with 30 x 6 = 180 lines and also 68 columns.
+Using dim (allDataFinal) we can confirm that this data set meets this requirement
+At
